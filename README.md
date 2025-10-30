@@ -21,44 +21,49 @@
 
 ## 2. Auth (3 điểm)
 
-- Đăng ký vào hệ thống (bao gồm email, password, fullname). (1 điểm)
-  - Role mặc định là `member` (student).
+- Đăng ký vào hệ thống (bao gồm email, password). (1 điểm)
+  - Role mặc định là `member`.
   - Đăng ký thành công chuyển sang trang đăng nhập.
   - Đăng ký thất bại, reset form và hiển thị lỗi.
 - Đăng nhập vào hệ thống (bao gồm email, password). (1 điểm)
-  - Đăng nhập thành công:
-    - Nếu role là `admin`, chuyển vào trang quản lý khoá học của admin,
-    - Nếu role là `member`, chuyển vào home **(lưu ý, không cần xây dựng nội dung cho trang home).**
-  - Đăng nhập thất bại reset form và hiển thị lỗi.
-  - Lưu trạng thái đăng nhập (token) và thông tin người dùng trong localStorage.
+  - Đăng nhập thành công: Lưu trạng thái đăng nhập (token) và thông tin người dùng trong localStorage.
+  - Đăng nhập thất bại: Reset form và hiển thị lỗi.
 - Protected Route (xây dựng các tuyến đường được bảo vệ) (1 điểm):
-  - Nếu role là `admin`, có thể thực hiện các tác vụ quản lý phía dưới đây.
-  - Nếu role là `member`, chỉ hiện thị trang home sau khi đăng nhập.
+  - Nếu role là `admin`, chuyển vào trang quản lý sản phẩm,
+  - Nếu role khác, thông báo `Forbidden: You do not have access to this page`.
 
 **Validation:**
 
 - `email`: phải đúng định dạng email.
 - `password`: phải có ít nhất 6 ký tự.
-- `fullname`: không được để trống và tối thiểu 6 ký tự.
 - Trừ 0.5 điểm nếu không validation
 
 ---
 
 ## 3. Trang quản lý sản phẩm. (2đ)
 
-- Danh sách sản phẩm dạng bảng, hiện thị các thông tin sau:
+- **GET**: Hiển thị danh sách sản phẩm dạng bảng, hiện thị các thông tin sau (0.5đ):
+
   - Tên sản phẩm
   - Giá
   - Hành động: Sửa, Xoá
-- Xoá sản phẩm (0.5đ):
+
+- **DELETE**: Xoá sản phẩm (0.5đ):
+
   - Hiển thị hộp thoại xác nhận xoá.
   - Xoá thành công, cập nhật lại danh sách sản phẩm.
-- Nút thêm sản phẩm chuyển đến trang thêm sản phẩm:
-  - Thêm thành công, quay lại trang danh sách.
-- Nút sửa sản phẩm chuyển đến trang cập nhật sản phẩm:
-  - Cập nhật thành công, quay lại trang danh sách.
 
-**Validation:**
+- **POST**: Thêm sản phẩm (0.5đ):
+
+  - Nút thêm sản phẩm chuyển đến trang thêm sản phẩm.
+  - Thêm thành công, quay về trang danh sách sản phẩm.
+
+- **PUT**: Sửa sản phẩm (0.5đ):
+
+  - Nút sửa sản phẩm chuyển đến trang cập nhật sản phẩm.
+  - Cập nhật thành công, quay về trang danh sách sản phẩm.
+
+- **Validation:**
 
 - `title`: không được để trống và tối thiểu 3 ký tự.
 - `price`: phải là số lớn hơn hoặc bằng 0.
@@ -72,21 +77,27 @@
 
 ## 4. Trang quản lý danh mục (2đ)
 
-- Danh sách danh mục dạng bảng, hiện thị các thông tin sau:
+- **GET**: Hiển thị danh sách danh mục dạng bảng, hiện thị các thông tin sau (0.5đ):
+
   - Tên danh mục
-  - Mô tả
-  - Hành động: Sửa, Xoá
-- Xoá danh mục (0.5đ):
+  - Slug
+  - Hành động: Sửa, Xoá.
+
+- **DELETE**: Xoá danh mục (0.5đ):
+
   - Hiển thị hộp thoại xác nhận xoá.
-  - Nếu danh mục có sản phẩm, không cho xoá và hiển thị thông báo lỗi.
-  - Gợi ý: cần gọi `/products?categoryId=` để kiểm tra danh mục có sản phẩm hay không.
   - Xoá thành công, cập nhật lại danh sách danh mục.
-- Thêm danh mục (0.5đ):
+  - Nếu danh mục có sản phẩm, không được xoá và hiển thị thông báo lỗi (Gợi ý: đọc documentation của json-server để thực hiện yêu cầu).
+
+- **POST**: Thêm danh mục (0.5đ):
+
   - Nút thêm danh mục chuyển đến trang thêm danh mục.
-  - Thêm thành công, quay lại trang danh sách.
-- Sửa danh mục (0.5đ):
+  - Thêm thành công, quay về trang danh sách danh mục.
+
+- **PUT**: Sửa danh mục (0.5đ):
+
   - Nút sửa danh mục chuyển đến trang cập nhật danh mục.
-  - Cập nhật thành công, quay lại trang danh sách.
+  - Cập nhật thành công, quay về trang danh sách danh mục.
 
 **Validation:**
 
