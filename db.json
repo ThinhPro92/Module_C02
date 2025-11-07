@@ -53,12 +53,51 @@
       "thumbnail": "https://picsum.photos/200/300.webp",
       "stock": 100,
       "categoryId": 3
+    },
+    {
+      "title": "ăâêâă12",
+      "price": 12312,
+      "categoryId": "1",
+      "description": "dsfsdf",
+      "thumbnail": "https://picsum.photos/200/300.webp",
+      "stock": 213,
+      "id": 7
     }
   ],
   "categories": [
-    { "id": 1, "title": "Technology", "slug": "technology" },
-    { "id": 2, "title": "Clothing", "slug": "clothing" },
-    { "id": 3, "title": "Others", "slug": "others" }
+    {
+      "id": 1,
+      "title": "Technology",
+      "slug": "technology"
+    },
+    {
+      "id": 2,
+      "title": "Clothing",
+      "slug": "clothing"
+    },
+    {
+      "id": 3,
+      "title": "Others",
+      "slug": "others"
+    },
+    {
+      "title": "hrhr",
+      "slug": "tẽchnode",
+      "id": 4
+    }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "admin@example.com",
+      "password": "$2a$10$0kauufgd0jpL1C7nyZ8wPOINLwlsROMMz51KCvMfyLuXjPHmO9A8K",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "email": "thinh@gmail.com",
+      "password": "$2a$10$ESuwOkCo4RRy8DDZZCs2Du8AEdTUsuFMUqq3nWhpGiE0bKhn7bn7q",
+      "role": "member",
+      "id": 2
+    }
+  ]
 }
