@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   deeleteCategory,
   getCategory,
@@ -13,11 +13,22 @@ const Category = () => {
     const data = await getCategory();
     setCategories(data);
   };
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchCategory();
   }, []);
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+    navigate("/login");
+    return null;
+  }
+  if (user.role !== "admin") {
+    return (
+      <h2 style={{ textAlign: "center", margin: "50px" }}>
+        Forbidden: You do not have access to this resource.
+      </h2>
+    );
+  }
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Ban co chac muon xoa khong?");
     if (!confirmDelete) return;

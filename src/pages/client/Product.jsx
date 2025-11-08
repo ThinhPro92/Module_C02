@@ -23,7 +23,18 @@ const Product = () => {
     };
     fetchData();
   }, []);
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+    navigate("/login");
+    return null;
+  }
+  if (user.role !== "admin") {
+    return (
+      <h2 style={{ textAlign: "center", margin: "50px" }}>
+        Forbidden: You do not have access to this resource.
+      </h2>
+    );
+  }
   const deleteProduct = async (id) => {
     const confirmDelete = window.confirm("Ban co chac muon xoa khong?");
     if (!confirmDelete) return;
